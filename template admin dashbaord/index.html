@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - CyberDeals</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo">CyberDeals Admin</h1>
+            <nav>
+                <ul>
+                    <li><a href="#dashboard" class="super-button">Dashboard</a></li>
+                    <li><a href="#users" class="super-button">Users</a></li>
+                    <li><a href="#analytics" class="super-button">Analytics</a></li>
+                    <li><a href="#settings" class="super-button">Settings</a></li>
+                </ul>
+            </nav>
+            <button id="sidebar-toggle" class="sidebar-toggle">☰</button>
+        </div>
+    </header>
+
+    <aside id="sidebar" class="sidebar">
+        <nav>
+            <ul>
+                <li><a href="#dashboard">Dashboard</a></li>
+                <li><a href="#users">Users</a></li>
+                <li><a href="#analytics">Analytics</a></li>
+                <li><a href="#settings">Settings</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main id="main-content" class="main-content">
+        <section id="dashboard" class="dashboard">
+            <div class="container">
+                <h2>Dashboard Overview</h2>
+                <div class="stats-cards">
+                    <div class="stat-card">
+                        <h3>Total Users</h3>
+                        <p class="stat-number">12,345</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Revenue</h3>
+                        <p class="stat-number">$45,678</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Orders</h3>
+                        <p class="stat-number">1,234</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Growth</h3>
+                        <p class="stat-number">+15%</p>
+                    </div>
+                </div>
+                <div class="dashboard-widgets">
+                    <div class="widget">
+                        <h3>Recent Users</h3>
+                        <table class="user-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>John Doe</td>
+                                    <td>john@example.com</td>
+                                    <td>Active</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Jane Smith</td>
+                                    <td>jane@example.com</td>
+                                    <td>Active</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Bob Johnson</td>
+                                    <td>bob@example.com</td>
+                                    <td>Inactive</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="widget">
+                        <h3>Analytics Chart</h3>
+                        <div class="chart-placeholder">
+                            <p>Chart Placeholder - Revenue over time</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
