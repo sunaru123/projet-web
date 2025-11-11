@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ajouter un jeu - GameHub Pro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/js/all.min.js"></script>
+</head>
+<body>
+
+  <header class="header">
+    <a href="index.html"><img src="images/logo.png" alt="GameHub Pro" class="logo"></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="index.html#new-games">Jeux récents</a></li>
+      <li><a href="index.html#about">À propos</a></li>
+    </ul>
+  </header>
+
+  <section class="add-game-section">
+    <h1 class="section-title">Ajouter votre jeu</h1>
+    <p class="section-description">
+      Remplissez les informations ci-dessous pour partager votre création avec la communauté GameHub Pro.
+    </p>
+
+    <form id="gameForm" class="game-form">
+      <!-- Nom du jeu -->
+      <div class="form-group">
+        <label for="gameName">Nom du jeu :</label>
+        <input type="text" id="gameName" name="gameName" required placeholder="Ex: Eternal Quest">
+      </div>
+
+      <!-- Développeur -->
+      <div class="form-group">
+        <label for="developer">Nom du développeur / Studio :</label>
+        <input type="text" id="developer" name="developer" required placeholder="Ex: Alex Dupont">
+      </div>
+
+      <!-- Date de création -->
+      <div class="form-group">
+        <label for="creationDate">Date de création :</label>
+        <input type="date" id="creationDate" name="creationDate" required>
+      </div>
+
+      <!-- Catégorie -->
+      <div class="form-group">
+        <label for="category">Catégorie du jeu :</label>
+        <select id="category" name="category" required>
+          <option value="" disabled selected>Sélectionnez une catégorie</option>
+          <option value="RPG">RPG</option>
+          <option value="Course">Course</option>
+          <option value="Stratégie">Stratégie</option>
+          <option value="Aventure">Aventure</option>
+          <option value="Plateforme">Plateforme</option>
+          <option value="Puzzle">Puzzle</option>
+          <option value="Simulation">Simulation</option>
+          <option value="Action">Action</option>
+          <option value="Horreur">Horreur</option>
+          <option value="Autres">Autres</option>
+        </select>
+      </div>
+
+      <!-- Plateformes (checkbox) -->
+      <div class="form-group">
+        <label>Plateforme(s) disponible(s) :</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="platforms" value="PC"> PC</label>
+          <label><input type="checkbox" name="platforms" value="Mobile"> Mobile</label>
+          <label><input type="checkbox" name="platforms" value="Console"> Console</label>
+          <label><input type="checkbox" name="platforms" value="Web"> Web</label>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div class="form-group">
+        <label for="description">Description du jeu :</label>
+        <textarea id="description" name="description" rows="5" required 
+                  placeholder="Décrivez votre jeu : histoire, gameplay, fonctionnalités..."></textarea>
+      </div>
+
+      <!-- Image de couverture -->
+      <div class="form-group">
+        <label for="image">Image de couverture (couverture) :</label>
+        <input type="file" id="image" name="image" accept="image/*" required>
+        <small style="color: #666;">Formats acceptés : JPG, PNG, GIF (max 5 Mo recommandé)</small>
+      </div>
+
+      <!-- Trailer YouTube -->
+      <div class="form-group">
+        <label for="trailer">Lien du trailer (YouTube) :</label>
+        <input type="url" id="trailer" name="trailer" 
+               placeholder="https://www.youtube.com/watch?v=..." required>
+      </div>
+
+      <!-- Site officiel / Téléchargement -->
+      <div class="form-group">
+        <label for="website">Site officiel ou lien de téléchargement (optionnel) :</label>
+        <input type="url" id="website" name="website" 
+               placeholder="https://monjeu.com">
+      </div>
+
+      <!-- Tags -->
+      <div class="form-group">
+        <label for="tags">Mots-clés (séparés par des virgules) :</label>
+        <input type="text" id="tags" name="tags" 
+               placeholder="Ex: fantasy, open-world, multiplayer">
+        <small style="color: #666;">Ex: fantasy, pixel art, coop</small>
+      </div>
+
+      <!-- Bouton de soumission -->
+      <button type="submit" class="submit-btn">Publier le jeu</button>
+    </form>
+
+    <a href="index.html" class="back-link">
+      <i class="fas fa-arrow-left"></i> Retour à l’accueil
+    </a>
+  </section>
+
+  <footer class="footer">
+    <p>© 2025 GameHub Pro | Tous droits réservés</p>
+  </footer>
+
+  <!-- Script de soumission -->
+  <script>
+    // Charger les jeux existants
+    let games = JSON.parse(localStorage.getItem('games')) || [];
+
+    document.getElementById('gameForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Récupération des valeurs
+      const gameName = document.getElementById('gameName').value.trim();
+      const developer = document.getElementById('developer').value.trim();
+      const creationDate = document.getElementById('creationDate').value;
+      const category = document.getElementById('category').value;
+      const description = document.getElementById('description').value.trim();
+      const trailer = document.getElementById('trailer').value.trim();
+      const website = document.getElementById('website').value.trim();
+      const tagsInput = document.getElementById('tags').value.trim();
+      const imageInput = document.getElementById('image');
+
+      // Plateformes (checkbox)
+      const platforms = Array.from(document.querySelectorAll('input[name="platforms"]:checked'))
+                             .map(cb => cb.value);
+
+      // Validation image
+      if (!imageInput.files[0]) {
+        alert("Veuillez sélectionner une image de couverture.");
+        return;
+      }
+
+      // Lecture de l'image
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        const newGame = {
+          id: Date.now().toString(), // ID unique
+          name: gameName,
+          developer: developer,
+          date: creationDate,
+          category: category,
+          platforms: platforms,
+          description: description,
+          image: event.target.result, // base64
+          trailer: trailer,
+          website: website || null,
+          tags: tagsInput ? tagsInput.split(',').map(t => t.trim()).filter(t => t) : []
+        };
+
+        // Ajouter au tableau
+        games.push(newGame);
+
+        // Sauvegarder dans localStorage
+        localStorage.setItem('games', JSON.stringify(games));
+
+        alert('Votre jeu a été ajouté avec succès !');
+        window.location.href = 'index.html';
+      };
+
+      reader.readAsDataURL(imageInput.files[0]);
+    });
+  </script>
+
+</body>
+</html>

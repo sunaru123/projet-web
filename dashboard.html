@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard Admin – GameHub Pro</title>
+
+  <!-- ==== SAME FONT & CSS ==== -->
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {background:#0f0f1a; color:#e0e0e0; font-family:'Rajdhani',sans-serif; margin:0;}
+    .container {max-width:1200px; margin:auto; padding:2rem;}
+    .card {background:#1a1a2e; border-radius:12px; padding:1.5rem; margin-bottom:1.5rem; box-shadow:0 4px 12px rgba(0,0,0,.4);}
+    table {width:100%; border-collapse:collapse; font-size:0.95rem;}
+    th, td {padding:1rem; text-align:left; border-bottom:1px solid #2a2a3e;}
+    th {background:#00ffea; color:#0f0f1a; font-weight:600;}
+    tr:hover td {background:#2a2a3e;}
+    .btn {background:#00ffea; color:#0f0f1a; padding:.4rem .8rem; border:none; border-radius:4px; cursor:pointer; font-size:0.85rem;}
+    .btn.danger {background:#ff00c7;}
+    .download-btn {background:#ff00c7; color:#fff;}
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">GameHub Pro</div>
+  <nav>
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="index.html#new-games">Nouveautés</a></li>
+      <li><a href="dashboard.html" class="active">Dashboard Admin</a></li>
+    </ul>
+  </nav>
+  <div class="burger-container">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<main class="container">
+  <section class="card">
+    <h2 style="color:#00ffea; margin-top:0;">Statistiques des jeux</h2>
+    <div style="overflow-x:auto;">
+      <table id="statsTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Titre</th>
+            <th>Catégorie</th>
+            <th>Date</th>
+            <th>Développeur</th>
+            <th>Téléchargements</th>
+            <th style="width:120px;">Action</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 style="color:#00ffea; margin-top:0;">Résumé global</h2>
+    <p>Total jeux : <strong id="totalGames">0</strong></p>
+    <p>Total téléchargements : <strong id="totalDownloads">0</strong></p>
+  </section>
+</main>
+
+<script>
+/* ==== 1. GAMES (static + localStorage) ==== */
+const staticGames = {
+  eternal_quest: {
+    title: "Eternal Quest", category: "RPG", date: "12 mars 2025", devName: "Alex Dupont", devStudio: "IndieForge Studio"
+  },
+  cyber_drift: {
+    title: "Cyber Drift", category: "Course", date: "28 février 2025", devName: "Studio Nova", devStudio: "Nova Racing Team"
+  },
+  tiny_universe: {
+    title: "Tiny Universe", category: "Stratégie", date: "5 janvier 2025", devName: "Léa Morel", devStudio: "Cosmic Dreams"
+  },
+  shadow_protocol: {
+    title: "Shadow Protocol", category: "RPG", date: "22 novembre 2024", devName: "PixelForge", devStudio: "StealthCore Games"
+  }
+  // <-- add the rest of your static games here (title, category, date, devName, devStudio)
+};
+
+const STORAGE_GAMES = 'gamehub_games';
+const STORAGE_DL   = 'gamehub_downloads';
+
+function getAllGames() {
+  const user = JSON.parse(localStorage.getItem(STORAGE_GAMES) || '{}');
+  return { ...user, ...staticGames };   // static overwrite user if same ID
+}
+function getDownloads() {
+  return JSON.parse(localStorage.getItem(STORAGE_DL) || '{}');
+}
+function saveDownloads(dl) {
+  localStorage.setItem(STORAGE_DL, JSON.stringify(dl));
+}
+
+/* ==== 2. RENDER TABLE ==== */
+function renderTable() {
+  const games = getAllGames();
+  const downloads = getDownloads();
+  const tbody = document.querySelector('#statsTable tbody');
+  tbody.innerHTML = '';
+
+  let totalGames = 0, totalDl = 0;
+
+  Object.entries(games).forEach(([id, g]) => {
+    const dl = downloads[id] || 0;
+    totalGames++;
+    totalDl += dl;
+
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td><code>${id}</code></td>
+      <td><strong>${g.title}</strong></td>
+      <td>${g.category}</td>
+      <td>${g.date}</td>
+      <td>${g.devName} <small>(${g.devStudio})</small></td>
+      <td><strong>${dl}</strong></td>
+      <td>
+        <button class="btn download-btn" data-id="${id}">+1 DL</button>
+        <button class="btn danger" data-reset="${id}">Reset</button>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+
+  document.getElementById('totalGames').textContent = totalGames;
+  document.getElementById('totalDownloads').textContent = totalDl;
+}
+
+/* ==== 3. BUTTON ACTIONS ==== */
+document.getElementById('statsTable').addEventListener('click', e => {
+  const btn = e.target;
+  if (!btn.dataset.id && !btn.dataset.reset) return;
+
+  const id = btn.dataset.id || btn.dataset.reset;
+  const dl = getDownloads();
+
+  if (btn.dataset.id) {
+    // +1 download
+    dl[id] = (dl[id] || 0) + 1;
+  } else {
+    // reset
+    dl[id] = 0;
+  }
+  saveDownloads(dl);
+  renderTable();
+});
+
+/* ==== 4. BURGER MENU (same as index) ==== */
+document.querySelector('.burger-container').addEventListener('click', () => {
+  document.querySelector('.burger-container').classList.toggle('active');
+  document.querySelector('nav ul').classList.toggle('active');
+});
+
+/* ==== 5. INIT ==== */
+renderTable();
+</script>
+</body>
+</html>

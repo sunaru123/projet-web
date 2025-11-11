@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title id="pageTitle">Détail du jeu - GameHub Pro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/js/all.min.js"></script>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo1">
+        <img src="images/logo.png" alt="logo de site">
+    </div>
+    <div class="logo">GameHub Pro</div>
+    <nav>
+      <ul>
+        <li><a href="index.html#home">Accueil</a></li>
+        <li><a href="index.html#new-games">Jeux récents</a></li>
+        <li><a href="index.html#about">À propos</a></li>
+        <li><a href="index.html#team">Équipe</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="add_game.html" class="add-game-btn"><span>Add your game</span></a></li>
+      </ul>
+    </nav>
+    <div class="burger-container">
+      <div class="burger"></div>
+    </div>
+  </header>
+
+  <!-- DÉTAIL DU JEU -->
+  <section class="game-detail-section">
+    <div class="detail-container">
+      <a href="index.html#new-games" class="back-btn">Retour aux jeux</a>
+
+      <h1 id="detailTitle" class="game-name">Chargement...</h1>
+
+      <!-- Trailer -->
+      <div class="trailer-full">
+        <video id="detailTrailer" controls autoplay loop muted>
+          <source src="" type="video/mp4">
+        </video>
+      </div>
+
+      <!-- Description -->
+      <div class="detail-info">
+        <p id="detailDescription" class="game-description">Chargement...</p>
+
+        <!-- Infos jeu -->
+        <div class="game-stats">
+          <p><strong>Date de sortie :</strong> <span id="detailDate"></span></p>
+          <p><strong>Catégorie :</strong> <span id="detailCategory"></span></p>
+        </div>
+
+        <!-- Développeur -->
+        <div class="developer-detail">
+          <h3>Développeur</h3>
+          <p><strong>Nom :</strong> <span id="detailDevName"></span></p>
+          <p><strong>Studio :</strong> <span id="detailDevStudio"></span></p>
+          <p><strong>À propos :</strong> <span id="detailDevBio"></span></p>
+          <a href="#" id="detailDevLink" target="_blank" class="dev-link">Voir le profil</a>
+        </div>
+
+        <!-- Boutons -->
+        <div class="detail-actions">
+          <button class="download-btn">Télécharger le jeu</button>
+          <button class="wishlist-btn">Ajouter à la wishlist</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="footer" class="footer">
+    <div class="footer-content">
+      <div class="footer-section about">
+        <h3>À propos</h3>
+        <p>GameHub Pro connecte développeurs et gamers pour un futur gaming plus créatif et collaboratif.</p>
+      </div>
+      <div class="footer-section links">
+        <h3>Liens rapides</h3>
+        <ul>
+          <li><a href="index.html#home">Accueil</a></li>
+          <li><a href="index.html#new-games">Jeux récents</a></li>
+          <li><a href="index.html#about">À propos</a></li>
+        </ul>
+      </div>
+      <div class="footer-section social">
+        <h3>Suivez-nous</h3>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-discord"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 GameHub Pro | Tous droits réservés</p>
+    </div>
+  </footer>
+
+  <!-- CHARGEMENT DU JS EXTERNE -->
+  <script src="detail.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GameHub Pro - Gaming & Développeurs</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/js/all.min.js"></script>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo1">
+        <img src="images/logo.png" alt="logo de site">
+    </div>
+    <div class="logo">GameHub Pro</div>
+    <nav>
+      <ul>
+        <li><a href="#home">projects</a></li>
+        <li><a href="#new-games">Jeux récents</a></li>
+        <li><a href="#about">À propos</a></li>
+        <li><a href="#team">Équipe</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="add_game.html" class="add-game-btn"><span>Add your game</span></a></li>
+      </ul>
+    </nav>
+    <div class="burger-container">
+      <div class="burger"></div>
+    </div>
+  </header>
+
+  <!-- BARRE DES DERNIERS JEUX -->
+  <div class="latest-games-bar">
+    <div class="scroll-container">
+      <div class="game-slide">
+        <img src="images/jeux recents/game2.jpg" alt="Eternal Quest">
+        <video muted loop><source src="trailers/eternal_quest.mp4" type="video/mp4"></video>
+      </div>
+      <div class="game-slide">
+        <img src="images/jeux recents/game6.jpg" alt="Cyber Drift">
+        <video muted loop><source src="trailers/cyber_drift.mp4" type="video/mp4"></video>
+      </div>
+      <div class="game-slide">
+        <img src="images/jeux recents/game5.jpg" alt="Tiny Universe">
+        <video muted loop><source src="trailers/tiny_universe.mp4" type="video/mp4"></video>
+      </div>
+      <div class="game-slide">
+        <img src="images/jeux recents/game4.jpg" alt="Shadow Protocol">
+        <video muted loop><source src="trailers/shadow_protocol.mp4" type="video/mp4"></video>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>Bienvenue sur GameHub Pro</h1>
+      <p>La plateforme ultime pour les créateurs de jeux indépendants et les passionnés de gaming.</p>
+      <div class="hero-buttons">
+        <a href="add_game.html" class="add-game-btn"><span>Dépose ton jeu</span></a>
+        <a href="#new-games" class="explore-btn">Découvrir les jeux</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECHERCHE ET FILTRES -->
+  <section class="search-section">
+    <h2 class="section-title">Recherche de jeux</h2>
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Rechercher un jeu..." />
+    </div>
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-category="all">All</button>
+      <button class="filter-btn" data-category="RPG">RPG</button>
+      <button class="filter-btn" data-category="Course">Course</button>
+      <button class="filter-btn" data-category="Stratégie">Stratégie</button>
+    </div>
+  </section>
+
+  <!-- JEUX RÉCENTS (DYNAMIQUE) -->
+  <section id="new-games" class="games-container">
+    <h2 class="section-title">Jeux déposés par les développeurs</h2>
+    <div id="games-grid" class="grid-games"></div>
+  </section>
+
+  <!-- À PROPOS -->
+  <section id="about" class="about">
+    <h2 class="section-title">À propos de GameHub Pro</h2>
+    <p>GameHub Pro est la plateforme ultime pour les développeurs indépendants et les passionnés de gaming.</p>
+    <p>Présentez vos projets, partagez vos idées et inspirez la communauté du jeu vidéo.</p>
+  </section>
+
+  <!-- ÉQUIPE -->
+  <section id="team" class="team">
+    <h2 class="section-title">Notre Équipe</h2>
+    <div class="team-grid">
+      <div class="team-member">
+        <div class="team-avatar" style="background-image: url('https://via.placeholder.com/120/ffb6c1/000000?text=G');"></div>
+        <h3>CRYPTO GURU</h3>
+        <p>Fondateur</p>
+      </div>
+      <div class="team-member">
+        <div class="team-avatar" style="background-image: url('https://via.placeholder.com/120/90ee90/000000?text=D');"></div>
+        <h3>DAVINCI JEREMIE</h3>
+        <p>Media Advisor</p>
+      </div>
+      <div class="team-member">
+        <div class="team-avatar" style="background-image: url('https://via.placeholder.com/120/ffff00/000000?text=M');"></div>
+        <h3>THE MOON CARL</h3>
+        <p>Advisor</p>
+      </div>
+      <div class="team-member">
+        <div class="team-avatar" style="background-image: url('https://via.placeholder.com/120/ff4500/000000?text=A');"></div>
+        <h3>ALEX MEURER</h3>
+        <p>AD Advisor</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <h2 class="section-title">Contactez-nous</h2>
+    <p>Email: contact@gamehubpro.com</p>
+    <p>Discord: discord.gg/gamehubpro</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section about">
+        <h3>À propos</h3>
+        <p>GameHub Pro connecte développeurs et gamers pour un futur gaming plus créatif et collaboratif.</p>
+      </div>
+      <div class="footer-section links">
+        <h3>Liens rapides</h3>
+        <ul>
+          <li><a href="#home">Accueil</a></li>
+          <li><a href="#new-games">Jeux récents</a></li>
+          <li><a href="#about">À propos</a></li>
+        </ul>
+      </div>
+      <div class="footer-section social">
+        <h3>Suivez-nous</h3>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-discord"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 GameHub Pro | Tous droits réservés</p>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+    // === DONNÉES PAR DÉFAUT (si localStorage vide) ===
+    const defaultGames = [
+      {
+        id: "eternal_quest",
+        name: "Eternal Quest",
+        developer: "Alex Dupont",
+        date: "2025-03-12",
+        category: "RPG",
+        description: "Explorez un royaume oublié à travers des quêtes et des énigmes mystiques.",
+        image: "images/jeux recents/game5.jpg",
+        trailer: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+      },
+      {
+        id: "cyber_drift",
+        name: "Cyber Drift",
+        developer: "Studio Nova",
+        date: "2025-02-28",
+        category: "Course",
+        description: "Course futuriste cyberpunk avec véhicules personnalisables et circuits néon.",
+        image: "images/jeux recents/game3.jpg",
+        trailer: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+      },
+      {
+        id: "tiny_universe",
+        name: "Tiny Universe",
+        developer: "Léa Morel",
+        date: "2025-01-05",
+        category: "Stratégie",
+        description: "Créez des planètes et gérez un petit système solaire stratégique.",
+        image: "images/jeux recents/game1.jpg",
+        trailer: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+      },
+      {
+        id: "shadow_protocol",
+        name: "Shadow Protocol",
+        developer: "PixelForge",
+        date: "2024-11-22",
+        category: "RPG",
+        description: "Infiltration tactique où chaque décision peut changer la mission.",
+        image: "images/jeux recents/game2.jpg",
+        trailer: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+      }
+    ];
+
+    // Charger les jeux (localStorage ou défaut)
+    let games = JSON.parse(localStorage.getItem('games')) || defaultGames;
+    if (localStorage.getItem('games') === null) {
+      localStorage.setItem('games', JSON.stringify(defaultGames));
+    }
+
+    // === AFFICHAGE DES JEUX ===
+    const gamesGrid = document.getElementById('games-grid');
+
+    function displayGames(gamesToShow) {
+      gamesGrid.innerHTML = '';
+      if (gamesToShow.length === 0) {
+        gamesGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #aaa;">Aucun jeu trouvé.</p>';
+        return;
+      }
+
+      gamesToShow.forEach(game => {
+        const gameBox = document.createElement('div');
+        gameBox.className = 'game-box';
+        gameBox.dataset.category = game.category;
+
+        gameBox.innerHTML = `
+          <img src="${game.image}" alt="${game.name}" class="game-image">
+          <div class="game-bio">
+            <h3 class="game-name">${game.name}</h3>
+            <p class="game-info"><strong>Date :</strong> ${new Date(game.date).toLocaleDateString('fr-FR')}</p>
+            <p class="game-info"><strong>Développeur :</strong> ${game.developer}</p>
+            <p class="game-category"><strong>Catégorie :</strong> ${game.category}</p>
+            <p class="game-description">${game.description}</p>
+            <a href="game_detail.html?id=${game.id}" class="see-more-btn">Voir plus</a>
+          </div>
+        `;
+        gamesGrid.appendChild(gameBox);
+      });
+    }
+
+    // Affichage initial
+    displayGames(games);
+
+    // === RECHERCHE ===
+    document.getElementById('searchInput').addEventListener('input', function() {
+      const query = this.value.toLowerCase();
+      const filtered = games.filter(game => 
+        game.name.toLowerCase().includes(query) || 
+        game.developer.toLowerCase().includes(query) ||
+        game.description.toLowerCase().includes(query)
+      );
+      displayGames(filtered);
+    });
+
+    // === FILTRES ===
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+
+        const category = this.dataset.category;
+        if (category === 'all') {
+          displayGames(games);
+        } else {
+          const filtered = games.filter(game => game.category === category);
+          displayGames(filtered);
+        }
+      });
+    });
+
+    // === BURGER MENU ===
+    document.querySelector('.burger-container').addEventListener('click', function() {
+      document.querySelector('nav ul').classList.toggle('show');
+    });
+
+    // === VIDÉO AU HOVER (barre des derniers jeux) ===
+    document.querySelectorAll('.game-slide').forEach(slide => {
+      const img = slide.querySelector('img');
+      const video = slide.querySelector('video');
+
+      slide.addEventListener('mouseenter', () => {
+        img.style.opacity = '0';
+        video.style.opacity = '1';
+        video.play();
+      });
+
+      slide.addEventListener('mouseleave', () => {
+        img.style.opacity = '1';
+        video.style.opacity = '0';
+        video.pause();
+        video.currentTime = 0;
+      });
+    });
+  </script>
+
+</body>
+</html>
